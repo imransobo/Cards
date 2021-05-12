@@ -1,21 +1,21 @@
-var prviPotez = 2;                                  // potez prvog igrača u newGame()
-var igracNaPotezu ;                                // igrač koji je na potezu 
+var prviPotez = 2;                                  
+var igracNaPotezu ;                                
 
-var scoreIgrac1 = 0;                                // score igrača 1
-var scoreIgrac2 = 0;                               // score igrača 2
+var scoreIgrac1 = 0;                                
+var scoreIgrac2 = 0;
 
 
 // funkcija za generiranje karti
 function stvaranjeKarti() {
     
     const arr = [];
-    const brojRedova = 5;            //matrica (i i j)
+    const brojRedova = 5;           
 
 
 
     for (i = 1; i <= brojRedova; i++) {
-        for (j = 1; j <= brojRedova; j++) {                                  //MATRICA
-            arr.push({                                                       //funkcija push() implementirana pomoću w3schools
+        for (j = 1; j <= brojRedova; j++) {                                  
+            arr.push({                                                       
                 value: Math.floor(Math.random() * (10) + 1),
                 count: i + j,
             })
@@ -23,7 +23,7 @@ function stvaranjeKarti() {
     } 
 
     var arrSmjesko = []; 
-    for (var i = 0; i < 4; i++) {                                                               //SMJEŠKO
+    for (var i = 0; i < 4; i++) {                                                               
         var randomBr = Math.floor(Math.random() * (24 - 1) + 1)
         if (!arrSmjesko.includes(randomBr)) {
             arrSmjesko.push(randomBr)
@@ -34,7 +34,7 @@ function stvaranjeKarti() {
 
     var arrLjutko = [];
     for (var i = 0; i < 4; i++) {
-        var randomBr1 = Math.floor(Math.random() * (24 - 1) + 1)                                     //LJUTKO
+        var randomBr1 = Math.floor(Math.random() * (24 - 1) + 1)                                     
         if (!arrSmjesko.includes(randomBr1) && !arrLjutko.includes(randomBr1)) {
             arrLjutko.push(randomBr1)
         } else {
@@ -43,12 +43,12 @@ function stvaranjeKarti() {
     }
 
     arr.forEach((item, i) => {
-        if (arrSmjesko.includes(i)) {                                          // u ovom dijelu funkcije smješka predstavlja broj 1000
+        if (arrSmjesko.includes(i)) {
             arr[i] = {
                 ...item,
                 value: 1000,
             }
-        } else if (arrLjutko.includes(i)) {                                   // ljutka predstavlja broj 0
+        } else if (arrLjutko.includes(i)) {                                   
             arr[i] = {
                 ...item,
                 value: 0,
@@ -62,7 +62,7 @@ function stvaranjeKarti() {
 
     var CurrentDiv = document.getElementById("wrapper")
 
-    CurrentDiv.innerHTML = arr.map(function (a, i) {                 // prevrtanje karti urađeno pomoću: https://www.101computing.net/flip-cards-in-html-css-javascript/
+    CurrentDiv.innerHTML = arr.map(function (a, i) {                 
         return `<div id="${i}" class="flip-card" onclick="cardClick(${i}, ${a.value})">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
@@ -100,7 +100,7 @@ function cardClick(id, value) {
     if (igracNaPotezu) {
         switch (value) {
             case 1000: {
-                scoreIgrac1 = scoreIgrac1 * 2;                                 // sabiranje rezultata , smješko ili ljutko
+                scoreIgrac1 = scoreIgrac1 * 2;                                 
                 break;
             }
             case 0: {
